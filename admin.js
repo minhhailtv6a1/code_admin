@@ -165,7 +165,7 @@ const LCS_SP = [
     ten: "Áo Đá Bóng Nam Adidas Arsenal Sân Nhà 24/25 - Đỏ",
     anh: "./img_admin/./img_product/ao_quan/ao21.png",
     gia: 1980000,
-    loai: "Áo Quần",
+    loai: "Quần Áo",
     thuonghieu: "Adidas",
   },
   {
@@ -173,7 +173,7 @@ const LCS_SP = [
     ten: "Áo Đá Bóng Nam Adidas Real Madrid Sân Nhà 24/25 Authentic - Trắng",
     anh: "./img_admin/./img_product/ao_quan/ao22.png",
     gia: 3000000,
-    loai: "Áo Quần",
+    loai: "Quần Áo",
     thuonghieu: "Adidas",
   },
   {
@@ -181,7 +181,7 @@ const LCS_SP = [
     ten: "Áo Đá Bóng Nam Nike Liverpool FC Sân Nhà 24/25 - Đỏ",
     anh: "./img_admin/./img_product/ao_quan/ao23.png",
     gia: 2276000,
-    loai: "Áo Quần",
+    loai: "Quần Áo",
     thuonghieu: "Nike",
   },
   {
@@ -189,7 +189,7 @@ const LCS_SP = [
     ten: "Áo Đá Bóng Nam Nike Paris Saint-Germain Sân Nhà 24/25 - Xanh Navy",
     anh: "./img_admin/./img_product/ao_quan/ao24.png",
     gia: 2375000,
-    loai: "Áo Quần",
+    loai: "Quần Áo",
     thuonghieu: "Nike",
   },
   {
@@ -197,7 +197,7 @@ const LCS_SP = [
     ten: "Áo Đá Bóng Nam Adidas Manchester United Sân Nhà 24/25 Authentic - Đỏ",
     anh: "./img_admin/./img_product/ao_quan/ao25.png",
     gia: 3000000,
-    loai: "Áo Quần",
+    loai: "Quần Áo",
     thuonghieu: "Adidas",
   },
   {
@@ -205,7 +205,7 @@ const LCS_SP = [
     ten: "Áo Đá Bóng Nam Adidas Spain Sân Nhà 24 - Đỏ",
     anh: "./img_admin/./img_product/ao_quan/ao26.png",
     gia: 1581000,
-    loai: "Áo Quần",
+    loai: "Quần Áo",
     thuonghieu: "Adidas",
   },
   {
@@ -213,7 +213,7 @@ const LCS_SP = [
     ten: "Áo Đá Bóng Nam Adidas Germany Sân Khách 24 - Hồng",
     anh: "./img_admin/./img_product/ao_quan/ao27.png",
     gia: 1581000,
-    loai: "Áo Quần",
+    loai: "Quần Áo",
     thuonghieu: "Adidas",
   },
   {
@@ -221,7 +221,7 @@ const LCS_SP = [
     ten: "Áo Đá Bóng Nam Adidas Italy Sân Nhà 24 - Xanh Dương",
     anh: "./img_admin/./img_product/ao_quan/ao28.png",
     gia: 1581000,
-    loai: "Áo Quần",
+    loai: "Quần Áo",
     thuonghieu: "Adidas",
   },
   {
@@ -229,7 +229,7 @@ const LCS_SP = [
     ten: "Áo Đá Bóng Nam Adidas Argentina Sân Nhà 24 - Xanh Dương",
     anh: "./img_admin/./img_product/ao_quan/ao29.png",
     gia: 1581000,
-    loai: "Áo Quần",
+    loai: "Quần Áo",
     thuonghieu: "Adidas",
   },
   {
@@ -237,7 +237,7 @@ const LCS_SP = [
     ten: "Áo Đá Bóng Nam Nike England Sân Khách 24 - Xám Than",
     anh: "./img_admin/./img_product/ao_quan/ao30.png",
     gia: 1990000,
-    loai: "Áo Quần",
+    loai: "Quần Áo",
     thuonghieu: "Nike",
   },
 ];
@@ -247,7 +247,49 @@ const LCS_SP = [
 // //Lấy data
 // const ds_sp1 = JSON.parse(localStorage.getItem("DS_SP"));
 
-////////////////////////////////////////////////////////CÁC HÀM THỰC THI/////////////////////////////////////////////////
+//Danh sách khách hàng
+const DS_KH = [
+  {
+    ms_kh: "KH_001",
+    hvt: "Nguyễn Văn A",
+    tdn: "nva123",
+    ndk: "22/08/2024",
+  },
+  {
+    ms_kh: "KH_002",
+    hvt: "Nguyễn Văn B",
+    tdn: "nvb123",
+    ndk: "23/08/2024",
+  },
+  {
+    ms_kh: "KH_003",
+    hvt: "Nguyễn Văn C",
+    tdn: "nvc123",
+    ndk: "24/08/2024",
+  },
+  {
+    ms_kh: "KH_004",
+    hvt: "Trần Văn A",
+    tdn: "tva123",
+    ndk: "26/08/2024",
+  },
+  {
+    ms_kh: "KH_005",
+    hvt: "Trần Văn B",
+    tdn: "tvb123",
+    ndk: "27/08/2024",
+  },
+  {
+    ms_kh: "KH_006",
+    hvt: "Trương Văn A",
+    tdn: "tva1234",
+    ndk: "30/08/2024",
+  },
+];
+
+// localStorage.setItem("DS_KH", JSON.stringify(DS_KH));
+
+////////////////////////////////////////////////////////CODE SAN PHAM/////////////////////////////////////////////////
 const SP = JSON.parse(localStorage.getItem("DS_SP"));
 var ds_sp = SP;
 // const ds_sp1 = JSON.parse(localStorage.getItem("DS_SP"));
@@ -285,21 +327,22 @@ let totalPage; //Tổng số trang
 let perSP = []; //Mảng chứa các sp trên 1 trang
 
 function xuatDSSP() {
-  handlePage(1);
-  renderPage();
+  handlePage1(1);
+  renderPage1();
 }
 
 //Danh sách trang
-function renderPage() {
+function renderPage1() {
   totalPage = Math.ceil(ds_sp.length / perPage);
-  let page = document.querySelector("#pagination");
+  let page = document.querySelector("#pagination1");
   page.innerHTML = "";
   for (let i = 1; i <= totalPage; i++) {
-    page.innerHTML += `<li onclick="handlePage(${i})">${i}</li>`;
+    page.innerHTML += `<li onclick="handlePage1(${i})">${i}</li>`;
+    console.log(i);
   }
 }
 
-function handlePage(num) {
+function handlePage1(num) {
   currentPage = num;
   //Cắt SP từ mảng ds_sp
   perSP = ds_sp.slice(
@@ -312,7 +355,7 @@ function handlePage(num) {
 //Hàm xuất danh sách sản phẩm
 function xuatSP() {
   let s1 = `Danh sách sản phẩm`;
-  document.querySelector("#h1").innerHTML = s1;
+  document.querySelector("#h1_sp").innerHTML = s1;
   let s = `<tr>
     <th align="center">ID</th>
     <th align="center">Tên</th>
@@ -322,10 +365,16 @@ function xuatSP() {
     <th align="center">Thương hiệu</th>
     <th align="center">Tuỳ chỉnh</th>
     </tr>`;
-
-  perSP.forEach((i) => {
-    let tien = formatCash(i.gia.toString()) + "đ";
-    s += `<tr>
+  if (perSP.length === 0) {
+    s += `
+      <td colspan="7" align="center" style = "width: 100vw">Không có sản phẩm nào</td>
+      `;
+    let e = document.querySelector("#table1");
+    e.innerHTML = s;
+  } else {
+    perSP.forEach((i) => {
+      let tien = formatCash(i.gia.toString()) + "đ";
+      s += `<tr>
     <td align="center">${i.id}</td>
     <td>${i.ten}</td>
     <td><img src="${i.anh}" alt=""></td>
@@ -333,16 +382,19 @@ function xuatSP() {
     <td align="center">${i.loai}</td>
     <td align="center">${i.thuonghieu}</td>
     <td align="center">
-    <button id="xoa" onclick="xoaSP(${ds_sp.indexOf(i)})">Xoá</button>
+    <button id="xoa" onclick="xoaSP(${ds_sp.indexOf(
+      i
+    )})" style = "cursor: pointer">Xoá</button>
     <button id="chinh_sua" onclick="form_sua_sp(${ds_sp.indexOf(
       i
-    )})">Sửa</button>
+    )})" style = "cursor: pointer">Sửa</button>
     </tr>`;
-    // console.log(ds_sp.indexOf(i) + "hello");
-  });
+      // console.log(ds_sp.indexOf(i) + "hello");
+    });
 
-  let e = document.querySelector("#table1");
-  e.innerHTML = s;
+    let e = document.querySelector("#table1");
+    e.innerHTML = s;
+  }
 
   //Để display của các content khác là none
   content1.style.display = "block";
@@ -367,8 +419,8 @@ function xoaSP(num) {
   localStorage.setItem("DS_SP", JSON.stringify(dssp));
 
   //Xóa xong xuất lại tại trang chứa phần tử mới xóa
-  handlePage(Math.ceil(k / perPage));
-  renderPage();
+  handlePage1(Math.ceil(k / perPage));
+  renderPage1();
 }
 
 ///////////////////////////////////////////////////////////////CODE ĐỂ TÌM KIẾM/////////////////////////////////////////////////////
@@ -406,8 +458,8 @@ function form_tim_kiem_sp() {
   </div>
 
   <div id="loaiSP">
-    <label for="phanloai">Loại sản phẩm</label> <br>
-    <select id="phanloai" name="phanloai">
+    <label for="phan_loai">Loại sản phẩm</label> <br>
+    <select id="phan_loai" name="phan_loai">
       <option value="Chọn">Chọn</option>
       <option value="Giày">Giày</option>
       <option value="Quần áo">Quần áo</option>
@@ -425,7 +477,7 @@ function form_tim_kiem_sp() {
     </select>
   </div>
 
-  <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 90px; font-size: 16px" onclick="timKiemSP()">
+  <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 90px; font-size: 16px; cursor: pointer" onclick="timKiemSP()">
   `;
 }
 
@@ -433,7 +485,7 @@ function timKiemSP() {
   // ds_sp = SP;
   ds_sp = JSON.parse(localStorage.getItem("DS_SP"));
   let tenSP = document.querySelector("#ten_SP").value;
-  let loaiSP = document.querySelector("#phanloai").value;
+  let loaiSP = document.querySelector("#phan_loai").value;
   let gia1 = document.querySelector("#gia1").value;
   let gia2 = document.querySelector("#gia2").value;
   let thuonghieu = document.querySelector("#thuong_hieu").value;
@@ -449,7 +501,7 @@ function timKiemSP() {
   }
   if (loaiSP !== "Chọn") {
     ds_sp = ds_sp.filter((value) => {
-      return value.loai.toLowerCase().includes(tenSP.toLowerCase());
+      return value.loai.toLowerCase().includes(loaiSP.toLowerCase());
     });
   }
 
@@ -484,7 +536,7 @@ function form_them_sp() {
   
   <div id="anh_SP_them">
     <label for="anh_them">Thêm ảnh</label> <br>
-    <input id="anh_them" name="anh_them" type="file" accept="image/png, image/jpeg" style="font-size: 14px" onchange="ImagesFileAsURL123()">
+    <input id="anh_them" name="anh_them" type="file" accept="image/png, image/jpeg" style="font-size: 14px" onchange="inputAnh_them()">
   </div>
 
   <div id="gia_SP_them">
@@ -512,7 +564,7 @@ function form_them_sp() {
     </select>
   </div>
 
-  <input type="submit" name="submit" value="Thêm" style="margin-left: 110px; font-size: 16px" onclick="themSP()">
+  <input type="submit" name="submit" value="Thêm" style="margin-left: 110px; font-size: 16px;  cursor: pointer" onclick="themSP()">
   `;
 }
 
@@ -576,18 +628,6 @@ function themSP() {
 }
 
 //////////////////////////////////////////////////CODE ĐỂ CHỈNH SỬA//////////////////////////////////////
-function sua_SP(num) {
-  let k = num;
-  if (k % perPage == 0) k += perPage / 10;
-  let dssp = JSON.parse(localStorage.getItem("DS_SP"));
-  dssp.splice(num, 1); //Xoá trên localStorage
-  ds_sp.splice(num, 1); //Xoá trên màn hình hiển thị
-  localStorage.setItem("DS_SP", JSON.stringify(dssp));
-
-  //Xóa xong xuất lại tại trang chứa phần tử mới xóa
-  handlePage(Math.ceil(k / perPage));
-  renderPage();
-}
 
 function form_sua_sp(num) {
   let sp = ds_sp[num];
@@ -608,15 +648,14 @@ function form_sua_sp(num) {
       <label for=""><b>Giá sản phẩm</b></label>
       <input type="text" id="gia_sp_sua" value="${sp.gia}"/> <br />
       <label for=""><b>Sửa ảnh</b></label>
-      <input id="anh_sp_sua" type="file" accept="image/png, image/jpeg" onchange="ImagesFileAsURL(${num})"/> <br />
+      <input id="anh_sp_sua" type="file" accept="image/png, image/jpeg" onchange="inputAnh_sua(${num})"/> <br />
       <input id="save" type="button" value="Lưu chỉnh sửa" onclick="cap_nhat_sp(${num})"/>
     </form>
   
   `;
 }
-
 function dong_form_sua() {
-  let e = document.getElementById("fake_background");
+  let e = document.getElementById("fake_background1");
   e.style.display = "none";
 }
 
@@ -625,7 +664,7 @@ function cap_nhat_sp(num) {
   let ten = document.getElementById("ten_sp_sua");
   let gia = document.getElementById("gia_sp_sua");
   let anh = document.getElementById("anh_form_sua123");
-
+  console.log(anh.src);
   if (ten.value === "") {
     alert("Bạn chưa nhập tên sản phẩm!");
     return;
@@ -641,18 +680,23 @@ function cap_nhat_sp(num) {
   //Cật nhật giá trị của tên và giá
   sp.ten = ten.value;
   sp.gia = gia.value;
-  if (anh.src !== "") sp.anh = anh.src;
+  if (
+    anh.src !== "" &&
+    anh.src !==
+      "http://127.0.0.1:5500/img_admin/img_product/giay/default_shoes.png"
+  )
+    sp.anh = anh.src;
   //Đưa ds mới cập nhật lên localStorage
   localStorage.setItem("DS_SP", JSON.stringify(ds_sp));
   // console.log(anh.files);
   dong_form_sua();
   let k = num;
   if (k % perPage == 0) k += perPage / 10;
-  handlePage(Math.ceil(k / perPage));
-  renderPage();
+  handlePage1(Math.ceil(k / perPage));
+  renderPage1();
 }
 
-function ImagesFileAsURL(num) {
+function inputAnh_sua(num) {
   let e = document.getElementById("anh_sp_sua");
   let e1 = document.getElementById("anh_form_sua123");
   console.log(e.files);
@@ -672,7 +716,8 @@ function ImagesFileAsURL(num) {
   fileReader.readAsDataURL(fileToLoad); // Pass the single file to readAsDataURL
 }
 var anh_them_tmp = "";
-function ImagesFileAsURL123() {
+
+function inputAnh_them() {
   let e = document.getElementById("anh_them");
   console.log(e.files);
   if (e.files.length === 0) return;
@@ -685,4 +730,337 @@ function ImagesFileAsURL123() {
     anh_them_tmp = newImage.src;
   };
   fileReader.readAsDataURL(fileToLoad); // Pass the single file to readAsDataURL
+}
+
+//////////////////////////////////////////////CODE DON HANG///////////////////////////////////////////////////////////////////
+const DS_DH = [
+  {
+    maDH: "DH_01",
+    ngay: "23/9/2023",
+    tenKH: "Trần Văn A",
+    gia: 2000000,
+    trangThai: "Đã hủy",
+  },
+  {
+    maDH: "DH_02",
+    ngay: "1/10/2023",
+    tenKH: "Nguyễn Văn C",
+    gia: 2000000,
+    trangThai: "Đã giao hàng",
+  },
+  {
+    maDH: "DH_03",
+    ngay: "5/10/2023",
+    tenKH: "Nguyễn Văn A",
+    gia: 2000000,
+    trangThai: "Đã xác nhận",
+  },
+  {
+    maDH: "DH_04",
+    ngay: "10/10/2023",
+    tenKH: "Nguyễn Văn B",
+    gia: 2000000,
+    trangThai: "Chưa xử lí",
+  },
+  {
+    maDH: "DH_05",
+    ngay: "13/10/2023",
+    tenKH: "Trần Văn B",
+    gia: 3000000,
+    trangThai: "Đã hủy",
+  },
+  {
+    maDH: "DH_06",
+    ngay: "18/10/2023",
+    tenKH: "Trương Văn A",
+    gia: 2300000,
+    trangThai: "Đã giao hàng",
+  },
+  {
+    maDH: "DH_07",
+    ngay: "20/10/2023",
+    tenKH: "Nguyễn Văn A",
+    gia: 4200000,
+    trangThai: "Đã xác nhận",
+  },
+  {
+    maDH: "DH_08",
+    ngay: "25/10/2023",
+    tenKH: "Nguyễn Văn B",
+    gia: 2000000,
+    trangThai: "Chưa xử lí",
+  },
+];
+// localStorage.setItem("DS_DH", JSON.stringify(DS_DH));
+
+var ds_dh = JSON.parse(localStorage.getItem("DS_DH"));
+perDH = [];
+function xuatDS_DH() {
+  handlePage2(1);
+  renderPage2();
+}
+
+//Danh sách trang
+function renderPage2() {
+  totalPage = Math.ceil(ds_dh.length / perPage);
+  let page = document.querySelector("#pagination2");
+  page.innerHTML = "";
+  for (let i = 1; i <= totalPage; i++) {
+    page.innerHTML += `<li onclick="handlePage2(${i})">${i}</li>`;
+  }
+}
+
+function handlePage2(num) {
+  currentPage = num;
+  //Cắt SP từ mảng ds_sp
+  perDH = ds_dh.slice(
+    (currentPage - 1) * perPage,
+    (currentPage - 1) * perPage + perPage
+  );
+  xuatHD();
+}
+
+//Hàm xuất danh sách sản phẩm
+function xuatHD() {
+  let s1 = `Danh sách đơn hàng`;
+  document.querySelector("#h1_dh").innerHTML = s1;
+  let s = `<tr>
+    <th align="center">ID_HD</th>
+    <th align="center">ID_KH</th>
+    <th align="center">Giá</th>
+    <th align="center">Tình trạng</th>
+    <th align="center">Ngày</th>
+    <th align="center">Tuỳ chỉnh</th>
+    </tr>`;
+  if (perDH.length === 0) {
+    s += `
+    <td colspan="6" align="center" style = "width: 100vw">Không có hóa đơn nào</td>
+    `;
+    let e = document.querySelector("#table2");
+    e.innerHTML = s;
+  } else {
+    perDH.forEach((i) => {
+      let tien = formatCash(i.gia.toString()) + "đ";
+      s += `<tr>
+    <td align="center">${i.maDH}</td>
+    <td align="center">${i.tenKH}</td>
+    <td align="center">${tien}</td>
+    <td align="center">${i.trangThai}</td>
+    <td align="center">${i.ngay}</td>
+    <td align="center">
+    <button id="xoa" onclick="xoaDH(${ds_dh.indexOf(
+      i
+    )})" style = "cursor: pointer">Xoá</button>
+    <button id="chinh_sua" onclick="form_sua_dh(${ds_dh.indexOf(
+      i
+    )})" style = "cursor: pointer">Sửa</button>
+    </tr>`;
+      // console.log(ds_sp.indexOf(i) + "hello");
+    });
+
+    let e = document.querySelector("#table2");
+    e.innerHTML = s;
+  }
+
+  //Để display của các content khác là none
+  content1.style.display = "none";
+  content2.style.display = "block";
+  content3.style.display = "none";
+  content4.style.display = "none";
+
+  form_tim_kiem_dh();
+}
+
+//////////////////////////////////////////////////////////////HÀM ĐỂ XOÁ SẢN PHẨM///////////////////////////////////////////////////
+
+function xoaDH(num) {
+  let k = num;
+  if (k % perPage == 0) k += perPage / 10;
+
+  if (confirm("Bạn có muốn xoá sản phẩm không ?")) {
+    ds_dh.splice(num, 1); //Xoá trên màn hình hiển thị
+  }
+
+  //Cập nhập trên localStorage
+  // localStorage.setItem("DS_DH", JSON.stringify(ds_dh));
+
+  //Xóa xong xuất lại tại trang chứa phần tử mới xóa
+  handlePage2(Math.ceil(k / perPage));
+  renderPage2();
+}
+
+///////////////////////////////////////////////////////////////CODE ĐỂ TÌM KIẾM/////////////////////////////////////////////////////
+
+function form_tim_kiem_dh() {
+  let elm = document.querySelector("#timkiemDH");
+  elm.style.backgroundColor = "rgb(179, 178, 178)";
+  elm.innerHTML = "";
+  elm.innerHTML += `
+  <h2 align="center">Tìm kiếm đơn hàng</h2>
+  <div id="tenKH_formDH">
+    <label for="ten_KH_formDH">Tên khách hàng</label> <br>
+    <input id="ten_KH_formDH" name="ten_KH_formDH" type="text" placeholder="Nhập vào tên khách hàng">
+  </div>
+  
+  <div id="ngayDH">
+    <label for="ngay_DH_formDH">Lọc theo giá</label> <br>
+    <input name = "ngay_DH_formDH" id = "ngay_DH_formDH" type = "date" />
+  </div>
+
+  <div id="trangThaiDH_formDH">
+    <label for="trangThai_DH_formDH">Loại sản phẩm</label> <br>
+    <select id="trangThai_DH_formDH" name="trangThai_DH_formDH">
+      <option value="Chọn">Chọn</option>
+      <option value="Chưa xử lí">Chưa xử lí</option>
+      <option value="Đã xác nhận">Đã xác nhận</option>
+      <option value="Đã giao hàng">Đã giao hàng</option>
+      <option value="Đã hủy">Đã hủy</option>
+    </select>
+  </div>
+
+  <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 90px; font-size: 16px; cursor: pointer" onclick="timKiemDH()">
+  `;
+}
+
+function timKiemDH() {
+  // ds_sp = SP;
+  ds_dh = JSON.parse(localStorage.getItem("DS_DH"));
+  let tenKH = document.querySelector("#ten_KH_formDH").value;
+  let ngay = document.getElementById("ngay_DH_formDH").value;
+  let trangThai = document.getElementById("trangThai_DH_formDH").value;
+
+  if (tenKH !== "") {
+    ds_dh = ds_dh.filter((value) => {
+      return value.tenKH.toLowerCase().includes(tenKH.toLowerCase());
+    });
+  }
+  if (ngay !== "") {
+    let tmp = new Date(ngay);
+    let day = tmp.getDate();
+    let month = tmp.getMonth() + 1;
+    let year = tmp.getFullYear();
+    let sNgay = `${day}/${month}/${year}`;
+    ds_dh = ds_dh.filter((value) => {
+      return value.ngay.toLowerCase().includes(sNgay.toLowerCase());
+    });
+  }
+
+  if (trangThai !== "Chọn") {
+    ds_dh = ds_dh.filter((value) => {
+      return value.trangThai.toLowerCase().includes(trangThai.toLowerCase());
+    });
+  }
+  //Tìm xong sẽ xuất danh sách pử trang đầu
+  xuatDS_DH();
+}
+
+////////////////////////////////////////////////////////CODE SUA DON HANG///////////////////////////////////////////
+
+function form_sua_dh(num) {
+  let dh = ds_dh[num];
+  let e = document.getElementById("suaDH");
+  e.parentElement.style.display = "block";
+  e.innerHTML = ``;
+  e.innerHTML += `
+  <div style="text-align: right">    
+    <button id="close_form_sua" onclick="dong_form_sua_dh()" style="font-size: 30px; border:none; margin: 8px; background-color: rgb(245, 244, 244)">x</button>
+  </div>
+  <form id="form_sua" style="font-size:18px; ">
+      <label for=""><b>Tên khách hàng</b></label> <br/>
+      <input type="text" id="ten_kh_sua_dh" value="${dh.tenKH}"/> <br />
+      <label for=""><b>Ngày</b></label> <br/>
+      <input type="date" id="ngay_sua_hd"/> <br />
+      <label for="trangThai_dh_sua"><b>Trạng thái</b></label>
+      <select id="trangThai_dh_sua" name="trangThai_dh_sua">
+        <option id="tt1" value="Chưa xử lí">Chưa xử lí</option>
+        <option id="tt2" value="Đã xác nhận">Đã xác nhận</option>
+        <option id="tt3" value="Đã giao hàng">Đã giao hàng</option>
+        <option id="tt4" value="Đã hủy">Đã hủy</option>
+      </select> <br/>
+      <input id="save_dh" type="button" value="Lưu chỉnh sửa" onclick="cap_nhat_dh(${num})"/>
+    </form>  
+  `;
+  //Để ngày hiện đúng trên hóa đơn
+  let arr = dh.ngay.split("/");
+  // console.log(arr);
+  let date = Number.parseInt(arr[0]);
+  let month = Number.parseInt(arr[1]);
+  let year = Number.parseInt(arr[2]);
+  let tmp = `${year}-${month.toString().padStart(2, "0")}-${date
+    .toString()
+    .padStart(2, "0")}`;
+  let setNgay = document.getElementById("ngay_sua_hd");
+  setNgay.value = tmp;
+  //Để cho trạng thái hiện đúng trên hóa đơn
+  let tt1 = document.getElementById("tt1");
+  let tt2 = document.getElementById("tt2");
+  let tt3 = document.getElementById("tt3");
+  let tt4 = document.getElementById("tt4");
+  console.log(tt1.value);
+  console.log(dh.trangThai);
+  if (dh.trangThai === tt1.value) {
+    tt1.outerHTML = `
+      <option id="tt1" value="Chưa xử lí" selected>Chưa xử lí</option>
+    `;
+    return;
+  }
+  if (dh.trangThai === tt2.value) {
+    tt2.outerHTML = `
+      <option id="tt2" value="Đã xác nhận" selected>Đã xác nhận</option>
+    `;
+    return;
+  }
+  if (dh.trangThai === tt3.value) {
+    tt3.outerHTML = `
+      <option id="tt3" value="Đã giao hàng" selected>Đã giao hàng</option>
+    `;
+    return;
+  }
+  if (dh.trangThai === tt4.value) {
+    tt3.outerHTML = `
+      <option id="tt4" value="Đã hủy" selected>Đã hủy</option>
+    `;
+    return;
+  }
+}
+
+function dong_form_sua_dh() {
+  let e = document.getElementById("fake_background2");
+  e.style.display = "none";
+}
+
+function cap_nhat_dh(num) {
+  let dh = ds_dh[num];
+  let tenKH = document.getElementById("ten_kh_sua_dh");
+  let ngay = document.getElementById("ngay_sua_hd");
+  let trangThai = document.getElementById("trangThai_dh_sua");
+  if (tenKH.value === "") {
+    alert("Bạn chưa nhập tên khách hàng!");
+    return;
+  }
+  if (ngay.value === "") {
+    alert("Bạn chưa nhập ngày!");
+    return;
+  }
+  // console.log(tenKH.value);
+  // console.log(ngay.value);
+  // console.log(trangThai.value);
+
+  let tmp = new Date(ngay.value);
+  let day = tmp.getDate();
+  let month = tmp.getMonth() + 1;
+  let year = tmp.getFullYear();
+  let sNgay = `${day}/${month}/${year}`;
+  dh.ngay = sNgay;
+  dh.trangThai = trangThai.value;
+  dh.tenKH = tenKH.value;
+
+  //Đưa ds mới cập nhật lên localStorage
+  localStorage.setItem("DS_DH", JSON.stringify(ds_dh));
+  // console.log(anh.files);
+  dong_form_sua_dh();
+  let k = num;
+  if (k % perPage == 0) k += perPage / 10;
+  handlePage2(Math.ceil(k / perPage));
+  renderPage2();
 }

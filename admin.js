@@ -289,6 +289,66 @@ const DS_KH = [
 
 // localStorage.setItem("DS_KH", JSON.stringify(DS_KH));
 
+const ds_dc = [
+  {
+    soNha: "212",
+    duong: "Nguyễn Thông",
+    quan_huyen: "Quận 5",
+    tp_tinh: "TP HCM",
+    maKH: "KH_001",
+  },
+  {
+    soNha: "214",
+    duong: "Nguyễn Biểu",
+    quan_huyen: "Quận 5",
+    tp_tinh: "TP HCM",
+    maKH: "KH_002",
+  },
+  {
+    soNha: "345",
+    duong: "Nguyễn Thị Minh Khai",
+    quan_huyen: "Quận 1",
+    tp_tinh: "TP HCM",
+    maKH: "KH_006",
+  },
+  {
+    soNha: "213",
+    duong: "Nguyễn Văn Cừ",
+    quan_huyen: "Quận 5",
+    tp_tinh: "TP HCM",
+    maKH: "KH_004",
+  },
+  {
+    soNha: "112",
+    duong: "Ngô Quyền",
+    quan_huyen: "Quận 5",
+    tp_tinh: "TP HCM",
+    maKH: "KH_005",
+  },
+  {
+    soNha: "351",
+    duong: "Nguyễn Trãi",
+    quan_huyen: "Quận 5",
+    tp_tinh: "TP HCM",
+    maKH: "KH_003",
+  },
+  {
+    soNha: "342",
+    duong: "An Dương Vương",
+    quan_huyen: "Quận 5",
+    tp_tinh: "TP HCM",
+    maKH: "KH_006",
+  },
+  {
+    soNha: "201",
+    duong: "Hưng Phú",
+    quan_huyen: "Quận 8",
+    tp_tinh: "TP HCM",
+    maKH: "KH_003",
+  },
+];
+// localStorage.setItem("DS_DC", JSON.stringify(ds_dc));
+
 ////////////////////////////////////////////////////////CODE SAN PHAM/////////////////////////////////////////////////
 const SP = JSON.parse(localStorage.getItem("DS_SP"));
 var ds_sp = SP;
@@ -318,6 +378,9 @@ function gohome() {
   content4.style.display = "none";
 }
 
+window.onload = function (e) {
+  gohome();
+};
 ////////////////////////////////////////////CODE ĐỂ PHÂN TRANG/////////////////////////////////////////////////////////
 
 //Các biến để phân trang
@@ -327,17 +390,20 @@ let totalPage; //Tổng số trang
 let perSP = []; //Mảng chứa các sp trên 1 trang
 
 function xuatDSSP() {
-  handlePage1(1);
   renderPage1();
+  handlePage1(1);
 }
 
 //Danh sách trang
 function renderPage1() {
+  //Cho số lượng phần tử trên 1 trang
+  perPage = 5;
   totalPage = Math.ceil(ds_sp.length / perPage);
   let page = document.querySelector("#pagination1");
   page.innerHTML = "";
   for (let i = 1; i <= totalPage; i++) {
-    page.innerHTML += `<li onclick="handlePage1(${i})">${i}</li>`;
+    page.innerHTML += `<li id="sp_Page_${i}" onclick="handlePage1(${i})">${i}</li>`;
+    let e = document.getElementById("");
     console.log(i);
   }
 }
@@ -350,6 +416,19 @@ function handlePage1(num) {
     (currentPage - 1) * perPage + perPage
   );
   xuatSP();
+
+  //Thực hiện để lúc chọn trang nào thì số trang của nó in đậm nổi bật
+  for (let i = 1; i <= totalPage; i++) {
+    let Page_id = "sp_Page_" + i;
+    let e = document.getElementById(Page_id);
+    if (i == num) {
+      e.style.color = "#ffff";
+      e.style.backgroundColor = "#0f1b07";
+    } else {
+      e.style.color = "#0f1b07";
+      e.style.backgroundColor = "#ffff";
+    }
+  }
 }
 
 //Hàm xuất danh sách sản phẩm
@@ -377,7 +456,7 @@ function xuatSP() {
       s += `<tr>
     <td align="center">${i.id}</td>
     <td>${i.ten}</td>
-    <td><img src="${i.anh}" alt=""></td>
+    <td align="center"><img src="${i.anh}" alt=""></td>
     <td align="center">${tien}</td>
     <td align="center">${i.loai}</td>
     <td align="center">${i.thuonghieu}</td>
@@ -636,7 +715,7 @@ function form_sua_sp(num) {
   e.innerHTML = ``;
   e.innerHTML += `
   <div style="text-align: right">    
-    <button id="close_form_sua" onclick="dong_form_sua()" style="font-size: 30px; border:none; margin: 8px; background-color: rgb(245, 244, 244)">x</button>
+    <button id="close_form_sua" onclick="dong_form_sua()" style="font-size: 30px; border:none; margin: 8px; background-color: rgb(245, 244, 244); cursor: pointer">x</button>
   </div>
   <div style="text-align: center;">
     <img src="${sp.anh}" alt="hinh_sp">
@@ -737,57 +816,145 @@ const DS_DH = [
   {
     maDH: "DH_01",
     ngay: "23/9/2023",
-    tenKH: "Trần Văn A",
-    gia: 2000000,
+    maKH: "KH_004",
+    chiTiet: {
+      listSP: [
+        {
+          sp: LCS_SP[1],
+          soLuong: 1,
+        },
+        {
+          sp: LCS_SP[2],
+          soLuong: 2,
+        },
+      ],
+    },
     trangThai: "Đã hủy",
   },
   {
     maDH: "DH_02",
     ngay: "1/10/2023",
-    tenKH: "Nguyễn Văn C",
-    gia: 2000000,
+    maKH: "KH_003",
+    chiTiet: {
+      listSP: [
+        {
+          sp: LCS_SP[1],
+          soLuong: 1,
+        },
+        {
+          sp: LCS_SP[2],
+          soLuong: 2,
+        },
+      ],
+    },
     trangThai: "Đã giao hàng",
   },
   {
     maDH: "DH_03",
     ngay: "5/10/2023",
-    tenKH: "Nguyễn Văn A",
-    gia: 2000000,
+    maKH: "KH_006",
+    chiTiet: {
+      listSP: [
+        {
+          sp: LCS_SP[1],
+          soLuong: 1,
+        },
+        {
+          sp: LCS_SP[2],
+          soLuong: 2,
+        },
+      ],
+    },
     trangThai: "Đã xác nhận",
   },
   {
     maDH: "DH_04",
     ngay: "10/10/2023",
-    tenKH: "Nguyễn Văn B",
-    gia: 2000000,
+    maKH: "KH_002",
+    chiTiet: {
+      listSP: [
+        {
+          sp: LCS_SP[1],
+          soLuong: 1,
+        },
+        {
+          sp: LCS_SP[2],
+          soLuong: 2,
+        },
+      ],
+    },
     trangThai: "Chưa xử lí",
   },
   {
     maDH: "DH_05",
     ngay: "13/10/2023",
-    tenKH: "Trần Văn B",
-    gia: 3000000,
+    maKH: "KH_005",
+    chiTiet: {
+      listSP: [
+        {
+          sp: LCS_SP[1],
+          soLuong: 1,
+        },
+        {
+          sp: LCS_SP[2],
+          soLuong: 2,
+        },
+      ],
+    },
     trangThai: "Đã hủy",
   },
   {
     maDH: "DH_06",
     ngay: "18/10/2023",
-    tenKH: "Trương Văn A",
-    gia: 2300000,
+    maKH: "KH_006",
+    chiTiet: {
+      listSP: [
+        {
+          sp: LCS_SP[1],
+          soLuong: 1,
+        },
+        {
+          sp: LCS_SP[2],
+          soLuong: 2,
+        },
+      ],
+    },
     trangThai: "Đã giao hàng",
   },
   {
     maDH: "DH_07",
     ngay: "20/10/2023",
-    tenKH: "Nguyễn Văn A",
-    gia: 4200000,
+    maKH: "KH_006",
+    chiTiet: {
+      listSP: [
+        {
+          sp: LCS_SP[1],
+          soLuong: 1,
+        },
+        {
+          sp: LCS_SP[2],
+          soLuong: 2,
+        },
+      ],
+    },
     trangThai: "Đã xác nhận",
   },
   {
     maDH: "DH_08",
     ngay: "25/10/2023",
-    tenKH: "Nguyễn Văn B",
-    gia: 2000000,
+    maKH: "KH_002",
+    chiTiet: {
+      listSP: [
+        {
+          sp: LCS_SP[1],
+          soLuong: 1,
+        },
+        {
+          sp: LCS_SP[2],
+          soLuong: 2,
+        },
+      ],
+    },
     trangThai: "Chưa xử lí",
   },
 ];
@@ -796,17 +963,19 @@ const DS_DH = [
 var ds_dh = JSON.parse(localStorage.getItem("DS_DH"));
 perDH = [];
 function xuatDS_DH() {
-  handlePage2(1);
   renderPage2();
+  handlePage2(1);
 }
 
 //Danh sách trang
 function renderPage2() {
+  //Cho số lượng phần tử trên 1 trang
+  perPage = 2;
   totalPage = Math.ceil(ds_dh.length / perPage);
   let page = document.querySelector("#pagination2");
   page.innerHTML = "";
   for (let i = 1; i <= totalPage; i++) {
-    page.innerHTML += `<li onclick="handlePage2(${i})">${i}</li>`;
+    page.innerHTML += `<li id="dh_Page_${i}" onclick="handlePage2(${i})">${i}</li>`;
   }
 }
 
@@ -818,6 +987,27 @@ function handlePage2(num) {
     (currentPage - 1) * perPage + perPage
   );
   xuatHD();
+
+  //Thực hiện để lúc chọn trang nào thì số trang của nó in đậm nổi bật
+  for (let i = 1; i <= totalPage; i++) {
+    let Page_id = "dh_Page_" + i;
+    let e = document.getElementById(Page_id);
+    if (i == num) {
+      e.style.color = "#ffff";
+      e.style.backgroundColor = "#0f1b07";
+    } else {
+      e.style.color = "#0f1b07";
+      e.style.backgroundColor = "#ffff";
+    }
+  }
+}
+
+function timKhachHang(ma) {
+  let khachHang = DS_KH.find((kh) => kh.ms_kh === ma);
+  console.log(ma);
+  // console.log(khachHang.ms_kh);
+  if (khachHang) return khachHang;
+  return null;
 }
 
 //Hàm xuất danh sách sản phẩm
@@ -826,10 +1016,11 @@ function xuatHD() {
   document.querySelector("#h1_dh").innerHTML = s1;
   let s = `<tr>
     <th align="center">ID_HD</th>
-    <th align="center">ID_KH</th>
-    <th align="center">Giá</th>
+    <th align="center">Tên khách hàng</th>
+    <th align="center">Chi tiết</th>
     <th align="center">Tình trạng</th>
     <th align="center">Ngày</th>
+    <th align="center">Địa chỉ giao hàng</th>
     <th align="center">Tuỳ chỉnh</th>
     </tr>`;
   if (perDH.length === 0) {
@@ -840,13 +1031,48 @@ function xuatHD() {
     e.innerHTML = s;
   } else {
     perDH.forEach((i) => {
-      let tien = formatCash(i.gia.toString()) + "đ";
+      //Tìm khách hàng theo maKH
+      let kh_tmp = timKhachHang(i.maKH);
+      //Chuỗi chứ thông tin chi tiết của sản phẩm
+      let listSP = ``;
+      let sum = 0;
+      i.chiTiet.listSP.forEach((j) => {
+        console.log(j);
+        listSP += `
+        * ${j.sp.ten} 
+        &nbsp;&nbsp;x${j.soLuong}  <br/>
+        Giá: <u>${formatCash(j.sp.gia.toString()) + "đ"}</u> <br/> <br/>
+        `;
+        // &nbsp giống /t nhưng dùng trong innerHTML
+        sum += Number.parseInt(j.sp.gia) * Number.parseInt(j.soLuong);
+      });
+
+      //Tính giá tiền
+      console.log(sum);
+      let tien = formatCash(sum.toString()) + "đ";
+      listSP += `<b>Tổng tiền: ${tien}</b>`;
+
+      //Lấy địa chỉ của khách hàng
+      let dc_tmp = ds_dc.find((dc) => dc.maKH === i.maKH);
+      console.log(dc_tmp);
+      let sDiaChi =
+        dc_tmp.soNha +
+        " " +
+        dc_tmp.duong +
+        ", " +
+        dc_tmp.quan_huyen +
+        ", " +
+        dc_tmp.tp_tinh +
+        "\n";
+
+      //Đưa thông tin đơn hàng vào chuỗi s để innerHTML ra
       s += `<tr>
     <td align="center">${i.maDH}</td>
-    <td align="center">${i.tenKH}</td>
-    <td align="center">${tien}</td>
+    <td align="center">${kh_tmp.hvt}</td>
+    <td align="">${listSP}</td>
     <td align="center">${i.trangThai}</td>
     <td align="center">${i.ngay}</td>
+    <td align="center">${sDiaChi}</td>
     <td align="center">
     <button id="xoa" onclick="xoaDH(${ds_dh.indexOf(
       i
@@ -877,7 +1103,7 @@ function xoaDH(num) {
   let k = num;
   if (k % perPage == 0) k += perPage / 10;
 
-  if (confirm("Bạn có muốn xoá sản phẩm không ?")) {
+  if (confirm("Bạn có muốn xoá đơn hàng không ?")) {
     ds_dh.splice(num, 1); //Xoá trên màn hình hiển thị
   }
 
@@ -931,7 +1157,10 @@ function timKiemDH() {
 
   if (tenKH !== "") {
     ds_dh = ds_dh.filter((value) => {
-      return value.tenKH.toLowerCase().includes(tenKH.toLowerCase());
+      let khachHang = timKhachHang(value.maKH);
+      return (
+        khachHang && khachHang.hvt.toLowerCase().includes(tenKH.toLowerCase())
+      );
     });
   }
   if (ngay !== "") {
@@ -941,7 +1170,7 @@ function timKiemDH() {
     let year = tmp.getFullYear();
     let sNgay = `${day}/${month}/${year}`;
     ds_dh = ds_dh.filter((value) => {
-      return value.ngay.toLowerCase().includes(sNgay.toLowerCase());
+      return value.ngay.includes(sNgay);
     });
   }
 
@@ -960,6 +1189,7 @@ function form_sua_dh(num) {
   let dh = ds_dh[num];
   let e = document.getElementById("suaDH");
   e.parentElement.style.display = "block";
+  let kh_tmp = timKhachHang(dh.maKH);
   e.innerHTML = ``;
   e.innerHTML += `
   <div style="text-align: right">    
@@ -967,7 +1197,7 @@ function form_sua_dh(num) {
   </div>
   <form id="form_sua" style="font-size:18px; ">
       <label for=""><b>Tên khách hàng</b></label> <br/>
-      <input type="text" id="ten_kh_sua_dh" value="${dh.tenKH}"/> <br />
+      <input type="text" id="ten_kh_sua_dh" value="${kh_tmp.hvt}"/> <br />
       <label for=""><b>Ngày</b></label> <br/>
       <input type="date" id="ngay_sua_hd"/> <br />
       <label for="trangThai_dh_sua"><b>Trạng thái</b></label>
@@ -1017,7 +1247,7 @@ function form_sua_dh(num) {
     return;
   }
   if (dh.trangThai === tt4.value) {
-    tt3.outerHTML = `
+    tt4.outerHTML = `
       <option id="tt4" value="Đã hủy" selected>Đã hủy</option>
     `;
     return;

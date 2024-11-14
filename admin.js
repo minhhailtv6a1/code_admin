@@ -293,14 +293,14 @@ const ds_dc = [
   {
     soNha: "212",
     duong: "Nguyễn Thông",
-    quan_huyen: "Quận 5",
+    quan_huyen: "Quận Phú Nhuận",
     tp_tinh: "TP HCM",
     maKH: "KH_001",
   },
   {
     soNha: "214",
     duong: "Nguyễn Biểu",
-    quan_huyen: "Quận 5",
+    quan_huyen: "Quận Bình Thạnh",
     tp_tinh: "TP HCM",
     maKH: "KH_002",
   },
@@ -314,21 +314,21 @@ const ds_dc = [
   {
     soNha: "213",
     duong: "Nguyễn Văn Cừ",
-    quan_huyen: "Quận 5",
+    quan_huyen: "Quận Tân Bình",
     tp_tinh: "TP HCM",
     maKH: "KH_004",
   },
   {
     soNha: "112",
     duong: "Ngô Quyền",
-    quan_huyen: "Quận 5",
+    quan_huyen: "Quận 7",
     tp_tinh: "TP HCM",
     maKH: "KH_005",
   },
   {
     soNha: "351",
     duong: "Nguyễn Trãi",
-    quan_huyen: "Quận 5",
+    quan_huyen: "Quận 11",
     tp_tinh: "TP HCM",
     maKH: "KH_003",
   },
@@ -1025,7 +1025,7 @@ function xuatHD() {
     </tr>`;
   if (perDH.length === 0) {
     s += `
-    <td colspan="6" align="center" style = "width: 100vw">Không có hóa đơn nào</td>
+    <td colspan="7" align="center" style = "width: 100vw">Không có hóa đơn nào</td>
     `;
     let e = document.querySelector("#table2");
     e.innerHTML = s;
@@ -1144,7 +1144,10 @@ function form_tim_kiem_dh() {
     </select>
   </div>
 
-  <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 90px; font-size: 16px; cursor: pointer" onclick="timKiemDH()">
+  <div style="display: flex; flex-direction: row">
+    <input type="submit" name="submit" value="Tìm kiếm" style="margin: 20px 10px; font-size: 16px; cursor: pointer" onclick="timKiemDH()">
+    <input type="button" name="sort" value="Sắp xếp theo quận" style="margin: 20px 10px ; font-size: 16px; cursor: pointer" onclick="sapXepDH()">
+  </div>
   `;
 }
 
@@ -1293,4 +1296,20 @@ function cap_nhat_dh(num) {
   if (k % perPage == 0) k += perPage / 10;
   handlePage2(Math.ceil(k / perPage));
   renderPage2();
+}
+
+//////////////////////////////////////////////////////////Sắp xếp theo quận//////////////////////////////////////////////
+function sapXepDH() {
+  for (let i = 0; i < ds_dh.length - 1; i++) {
+    for (let j = i + 1; j < ds_dh.length; j++) {
+      let dc1 = ds_dc.find((dc) => dc.maKH === ds_dh[i].maKH).quan_huyen;
+      let dc2 = ds_dc.find((dc) => dc.maKH === ds_dh[j].maKH).quan_huyen;
+      if (dc1 > dc2) {
+        let tmp = ds_dh[i];
+        ds_dh[i] = ds_dh[j];
+        ds_dh[j] = tmp;
+      }
+    }
+  }
+  xuatDS_DH();
 }

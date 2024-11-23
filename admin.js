@@ -458,9 +458,9 @@ const LCS_SP = [
 ];
 
 // //Đưa data vào localstorage
-localStorage.setItem("DS_SP", JSON.stringify(LCS_SP));
+localStorage.setItem("product", JSON.stringify(LCS_SP));
 // //Lấy data
-// const ds_sp1 = JSON.parse(localStorage.getItem("DS_SP"));
+// const ds_sp1 = JSON.parse(localStorage.getItem("product"));
 
 //Danh sách khách hàng
 const DS_KH = [
@@ -565,9 +565,9 @@ const ds_dc = [
 localStorage.setItem("DS_DC", JSON.stringify(ds_dc));
 
 ////////////////////////////////////////////////////////CODE SAN PHAM/////////////////////////////////////////////////
-const SP = JSON.parse(localStorage.getItem("DS_SP"));
+const SP = JSON.parse(localStorage.getItem("product"));
 var ds_sp = SP;
-// const ds_sp1 = JSON.parse(localStorage.getItem("DS_SP"));
+// const ds_sp1 = JSON.parse(localStorage.getItem("product"));
 // console.log(ds_sp);
 
 let content1 = document.querySelector("#Content1");
@@ -703,7 +703,7 @@ function xuatSP() {
 //////////////////////////////////////////////////////////////HÀM ĐỂ XOÁ SẢN PHẨM///////////////////////////////////////////////////
 
 function xoaSP(num) {
-  let dssp = JSON.parse(localStorage.getItem("DS_SP"));
+  let dssp = JSON.parse(localStorage.getItem("product"));
   let sp = ds_sp[num];
   let index = dssp.findIndex((tmp) => sp.id === tmp.id);
   let k = num;
@@ -712,7 +712,7 @@ function xoaSP(num) {
     dssp.splice(index, 1); //Xoá trên localStorage
     ds_sp.splice(num, 1); //Xoá trên màn hình hiển thị
   }
-  localStorage.setItem("DS_SP", JSON.stringify(dssp));
+  localStorage.setItem("product", JSON.stringify(dssp));
 
   //Xóa xong xuất lại tại trang chứa phần tử mới xóa
   renderPage1();
@@ -785,7 +785,7 @@ function form_tim_kiem_sp() {
 
 function timKiemSP() {
   // ds_sp = SP;
-  ds_sp = JSON.parse(localStorage.getItem("DS_SP"));
+  ds_sp = JSON.parse(localStorage.getItem("product"));
   let tenSP = document.querySelector("#ten_SP").value;
   let loaiSP = document.querySelector("#phan_loai").value;
   let gia1 = document.querySelector("#gia1").value;
@@ -920,7 +920,7 @@ function form_them_sp() {
 }
 
 function themSP() {
-  ds_sp = JSON.parse(localStorage.getItem("DS_SP"));
+  ds_sp = JSON.parse(localStorage.getItem("product"));
   let tenSP = document.querySelector("#ten_them").value;
   let anhSP = anh_them_tmp;
   let loaiSP = document.querySelector("#loai_them").value;
@@ -985,7 +985,7 @@ function themSP() {
   };
   ds_sp.push(sp);
   xuatDSSP();
-  localStorage.setItem("DS_SP", JSON.stringify(ds_sp));
+  localStorage.setItem("product", JSON.stringify(ds_sp));
   // console.log(ds_sp);
 }
 
@@ -1066,7 +1066,7 @@ function dong_form_sua() {
 }
 
 function cap_nhat_sp(num) {
-  let dssp = JSON.parse(localStorage.getItem("DS_SP"));
+  let dssp = JSON.parse(localStorage.getItem("product"));
   let sp = ds_sp[num];
   let index = dssp.findIndex((tmp) => tmp.id === sp.id);
   let ten = document.getElementById("ten_sp_sua");
@@ -1102,7 +1102,7 @@ function cap_nhat_sp(num) {
   }
   //Đưa ds mới cập nhật lên localStorage
   dssp[index] = sp;
-  localStorage.setItem("DS_SP", JSON.stringify(dssp));
+  localStorage.setItem("product", JSON.stringify(dssp));
   // console.log(anh.files);
   dong_form_sua();
   let k = num;
@@ -1180,10 +1180,12 @@ const DS_DH = [
         {
           sp: ds_sp[1],
           soLuong: 1,
+          size: "40",
         },
         {
           sp: ds_sp[30],
           soLuong: 2,
+          size: "XL",
         },
       ],
     },
@@ -1199,10 +1201,12 @@ const DS_DH = [
         {
           sp: ds_sp[10],
           soLuong: 1,
+          size: "39",
         },
         {
           sp: ds_sp[25],
           soLuong: 3,
+          size: "L",
         },
       ],
     },
@@ -1218,10 +1222,12 @@ const DS_DH = [
         {
           sp: ds_sp[6],
           soLuong: 2,
+          size: "41",
         },
         {
           sp: ds_sp[20],
           soLuong: 1,
+          size: "XL",
         },
       ],
     },
@@ -1237,10 +1243,12 @@ const DS_DH = [
         {
           sp: ds_sp[10],
           soLuong: 1,
+          size: "40",
         },
         {
           sp: ds_sp[33],
           soLuong: 2,
+          size: "M",
         },
       ],
     },
@@ -1256,10 +1264,12 @@ const DS_DH = [
         {
           sp: ds_sp[19],
           soLuong: 1,
+          size: "43",
         },
         {
           sp: ds_sp[31],
           soLuong: 1,
+          size: "XXL",
         },
       ],
     },
@@ -1275,10 +1285,12 @@ const DS_DH = [
         {
           sp: ds_sp[16],
           soLuong: 1,
+          size: "40",
         },
         {
           sp: ds_sp[22],
           soLuong: 2,
+          size: "M",
         },
       ],
     },
@@ -1294,10 +1306,12 @@ const DS_DH = [
         {
           sp: ds_sp[14],
           soLuong: 1,
+          size: "38",
         },
         {
           sp: ds_sp[28],
           soLuong: 2,
+          size: "M",
         },
       ],
     },
@@ -1313,10 +1327,12 @@ const DS_DH = [
         {
           sp: ds_sp[0],
           soLuong: 1,
+          size: "40",
         },
         {
           sp: ds_sp[11],
           soLuong: 2,
+          size: "43",
         },
       ],
     },
@@ -1577,6 +1593,7 @@ function hienThiChiTietDH(maDH) {
     <th>Tên sản phẩm</th>
     <th>Giá</th>
     <th>Số lượng</th>
+    <th>Size</th>
     </tr>
   `;
   let sum = 0;
@@ -1587,6 +1604,7 @@ function hienThiChiTietDH(maDH) {
       <td>${i.sp.ten}</td>
       <td>${formatCash(i.sp.gia.toString()) + "đ"}</td>
       <td>${i.soLuong}</td>
+      <td>${i.size}</td>
     </tr>
     `;
     sum += i.sp.gia * i.soLuong;

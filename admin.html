@@ -82,9 +82,48 @@
         <div id="fake_background2"><div id="suaDH"></div></div>
         <div id="fake_background3"><div id="chitietDH"></div></div>
       </div>
-      <div id="Content3"></div>
-      <div id="Content4"></div>
+      <div id="Content3">
+        <div id="Mid_content3">
+          <h1 id="h1_kh"></h1>
+          <table id="table3"></table>
+          <ul id="pagination3"></ul>
+        </div>
+        <div id="timkiemkh"></div>
+        <div id="themKH"></div>
+        <div id="fake_background5"><div id="suaKH"></div></div>
+      </div>
+      <div id="Content4">
+        <div id="Mid_content4">
+          <h1 style="text-align: center; font-size: 30px">
+            Thống kê theo khoảng thời gian
+          </h1>
+          <div id="searchdate">
+            <input type="date" id="date1" />
+            <label for="đến ngày">To</label>
+            <input type="date" name="" id="date2" />
+            <br />
+            <button id="loc " style="margin-top: 10px" onclick="xuatDS_DT()">
+              lọc
+            </button>
+          </div>
+          <h1 id="h1_dt"></h1>
+          <table id="table4"></table>
+          <p id="tongthu"></p>
+          <p id="banchay"></p>
+          <p id="bancham"></p>
+          <h1 id="h1_dt1"></h1>
+          <table id="table5"></table>
+          <p id="topkh"></p>
+        </div>
+        <div id="fake_background4">
+          <div id="xemhoadon"></div>
+          <div id="fake_background6"><div id="xemChiTiet"></div></div>
+        </div>
+      </div>
     </div>
-    <script src="admin.js"></script>
+    <script src="./admin_js/sanPham.js"></script>
+    <script src="./admin_js/donHang.js"></script>
+    <script src="./admin_js/khachHang.js"></script>
+    <script src="./admin_js/doanhThu.js"></script>
   </body>
 </html>
